@@ -1,0 +1,151 @@
+html
+  head
+    title 과문학
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width', ,='', initial-scale='1')
+    script(src='https://code.jquery.com/jquery-1.12.4.min.js', integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=', crossorigin='anonymous')
+    // 합쳐지고 최소화된 최신 CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    // 부가적인 테마
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css')
+    // 합쳐지고 최소화된 최신 자바스크립트
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    // CKEditor
+    script(type='text/javascript', src='/ckeditor/ckeditor.js')
+
+
+    style(type='text/css').
+      /*header CSS*/
+      #header-img {
+      float: left;
+      width: 50px;
+      height: 50px;
+      }
+      /* Desktops and laptops */
+      @media all and (min-width:1025px) {
+      .header-brand {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      padding-left: 70px;
+      }
+      .container-fluid {
+      padding: 0 100px;
+      }
+      }
+      .header-brand {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      padding-left: 30px;
+      }
+      .header-brand button {
+      width: 40px;
+      height: 40px;
+      }
+      .navbar-brand {
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+      }
+      .header-menu {
+      float: right;
+      padding-right: 140px;
+      }
+      .header-menu li {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      margin-right: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 1em;
+      }
+
+      /*main-content CSS*/
+      .main-content {
+      margin-top: 110px;
+      }
+
+      /*footer CSS*/
+      @media all and (min-width:1025px) {
+      footer #footer-logo {
+      padding-left: 100px;
+      }
+      }
+      footer #footer-logo img{
+      width: 150px;
+      max-height: 80px;
+      display: inline-block;
+      }
+      footer #footer-logo h2{
+      display: inline-block;
+      }
+      /*footer mobile*/
+      @media all and (max-width: 400px) {
+      #footer-logo img{
+      margin-left: 40px;
+      }
+      footer .container .row p {
+      font-size: 0.8em;
+      }
+      }
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header.header-brand
+          img#header-img(src='/resource/brain.png')
+          a.navbar-brand(href='/') 과문학
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mobile-menu')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+
+        #mobile-menu.collapse.navbar-collapse
+          ul.nav.navbar-nav.header-menu
+            li
+              a(href='#') LOGIN
+            li
+              a(href='#') JOIN
+            li
+              a(href='#') VIDEO
+            li
+              a(href='#') COMMUNITY
+            li
+              a(href='#') WRITING
+      //container-fluid
+
+    //main-content
+    .container.main-content
+      .row
+        form(action='/video/add', method='post')
+          .form-group
+            label(for='title') 제목
+            input.form-control(type='text', name='add_title')
+          .form-group
+            label(for='title') 글쓴이
+            input.form-control(type='text', name='add_author')
+          .form-group
+            label(for='description') 본문
+            textarea#description(name='add_description', rows='10', cols='80')
+              | This is my textarea to be replaced with CKEditor.
+            script.
+              CKEDITOR.replace( 'add_description' );
+              CKEDITOR.instances.description.getData();
+              //for ( instance in CKEDITOR.instances )
+                //CKEDITOR.instances[instance].updateElement();
+              CKEDITOR.instances.description.updateElement();
+            textarea(name='middle_description' style='visibility:hidden')
+            button.btn.btn-default(type='submit') 제출
+
+
+    footer(style='background-color: #f8f8f8; ')
+      .container
+        br
+        .row
+          #footer-logo.col-md-4
+            img#footer-img(src='/resource/brain.png')
+            h2 과문학
+          .col-md-2
+          .col-md-6
+            p 대표자 : 죠죠, 조개 | 주소 : 경기도 안산시 상록구 사동
+            p 이메일 : pj6563@naver.com | 사업자 등록번호 : 111-1111-111
+            p 좀 띨띨하지만 과학과 문학을 사랑하는 사람들입니다.
